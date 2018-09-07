@@ -6,7 +6,7 @@
  *  Description   :  This program will prompt the user to enter a file name. Then it will
                      use the SourceFile class to read the given file and the TargetFile class
                      to rewrite the file as a new file.
- *  Notes         :  None
+ *  Notes         :  Produces copy of file but without text.
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 import copiersupport.SourceFile;
 import copiersupport.TargetFile;
