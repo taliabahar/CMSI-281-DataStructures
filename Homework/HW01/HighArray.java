@@ -4,7 +4,7 @@
  *  Author        :  Talia Bahar, Maya Pegler-Gordon
  *  Date          :  2018-09-10
  *  Description   :  This program contains multiple methods that allows a user to find, remove, and add values to an array.
-                     It also contains a method to remove dupes, get the max value of the array, and to display the array.   
+                     It also contains a method to remove dupes, get the max value of the array, and to display the array.
  *  Notes         :  None
  *  Warnings      :  None
  *  Exceptions    :  None
@@ -22,7 +22,7 @@ public HighArray(int max) {    //constructor
   /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   * Method to check if denominations are negative.
   * @param searchKey  int[] of the denominations
-  * @return
+  * @return true if searchKey is found in array, false if searchKey cannot be found in array
   *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
   public boolean find(long searchKey) {
     int j;
@@ -31,7 +31,7 @@ public HighArray(int max) {    //constructor
         break;
       }
     }
-    if(j == nElems) { //WHY DOES THIS WORK WHEN ITS OUT OF THE FOR LOOP?
+    if(j == nElems) {
       return false;
     } else {
       return true;
@@ -41,7 +41,6 @@ public HighArray(int max) {    //constructor
   /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   * Method to insert number into array.
   * @param value  represents long user wants to insert
-  * @return
   *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
   public void insert(long value) {
     a[nElems] = value;
@@ -51,7 +50,7 @@ public HighArray(int max) {    //constructor
   /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   * Method to delete number from array.
   * @param value  represents long user wants to delete
-  * @return
+  * @return true if value is found and deleted, false if value cannot be found
   *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
   public boolean delete(long value){
     int j;
@@ -93,7 +92,6 @@ public HighArray(int max) {    //constructor
 
   /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   * Method to remove all duplicates from array.
-  * @return array without duplicate values
   *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
   public void noDupes() {
     for(int i=0; i < nElems-1; i++) {
@@ -107,7 +105,6 @@ public HighArray(int max) {    //constructor
 
   /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   * Method to display array contents.
-  * @return
   *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
   public void display(){
     for(int j=0; j<nElems; j++) {
