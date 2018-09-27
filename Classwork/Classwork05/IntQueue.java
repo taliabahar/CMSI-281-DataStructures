@@ -1,9 +1,10 @@
 /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  *  File name     :  IntQueue.java
- *  Purpose       :
+ *  Purpose       :  Created a Queue from IntLinkedList2
  *  Author        :  Talia Bahar
- *  Date          :
- *  Description   :
+ *  Date          :  2018-09-27
+ *  Description   :  Contains methods to create a Queue and methods to push, pop, and peek at its values.
+                     Also contains a main method for testing.
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 public class IntQueue {
 
