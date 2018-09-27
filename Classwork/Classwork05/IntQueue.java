@@ -57,27 +57,20 @@ public class IntQueue {
     System.out.println( "Removing top thing: " + testQueue.pop() );         // 41 removed
     System.out.println( "The top of the Queue: " + testQueue.peek() );      // 43
     System.out.println( "Removing top thing: " + testQueue.pop() );         // 43 removed
-
-    // System.out.println("");
-    // System.out.println( "The top of the Queue: " + testQueue.peek() );      // what'll it be?
-    //
-    // System.out.println(" ");
-    // testQueue.push( testQueue.pop() + testQueue.pop() );
-    // System.out.println( "The top of the Queue: " + testQueue.peek() );      // what'll it be?
-    // System.out.println( " ");
-
     System.out.println( "The top of the Queue: " + testQueue.peek() );      // 47
-    System.out.println( "Removing top thing: " + testQueue.pop() );         // 47 removed
-    System.out.println( "The top of the Queue: " + testQueue.peek() );      // 51
-    System.out.println( "Removing top thing: " + testQueue.pop() );         // 51 removed
+    testQueue.push( testQueue.pop() + testQueue.pop() );
+    System.out.println("Removed 47 and 51 and pushed their sum");
     System.out.println( "The top of the Queue: " + testQueue.peek() );      // 57
     System.out.println( "Removing top thing: " + testQueue.pop() );         // 57 removed
+    System.out.println( "The top of the Queue: " + testQueue.peek() );      // 98
+    System.out.println( "Removing top thing: " + testQueue.pop() );         // 98 removed
     System.out.println("Current Size of List: " + testQueue.getQueueSize());
+    System.out.println(" ");
     testQueue.push( 67 );
     testQueue.push( 94 );
     testQueue.push( 28 );
-
-
+    System.out.println("Pushed 67,94,28");
+    System.out.println("Current Size of List: " + testQueue.getQueueSize());
     System.out.println( "The top of the Queue: " + testQueue.peek() );      // 67
     System.out.println( "Removing top thing: " + testQueue.pop() );         // 67 removed
     System.out.println("Current Size of List: " + testQueue.getQueueSize());
@@ -87,6 +80,5 @@ public class IntQueue {
     System.out.println( "The top of the Queue: " + testQueue.peek() );      // 28
     System.out.println( "Removing top thing: " + testQueue.pop() );         // 28 removed
     System.out.println("Current Size of List: " + testQueue.getQueueSize());
-
     }
   }

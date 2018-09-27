@@ -1,6 +1,7 @@
 /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  *  File name     :  IntLinkedList2.java
- *  Purpose       :  Provides a class to create an integer linked list and a class to create an Iterator.
+ *  Purpose       :  Provides a class to create an integer linked list and a class to create an Iterator
+ *                   to be used in IntQueue.java.
  *  Author        :  Talia Bahar
  *  Date          :  2018-09-27
  *  Description   :  This program contains multiple methods to allow one to create and edit a list of integers
