@@ -1,5 +1,4 @@
-public class Deque
-{
+public class Deque {
   private int maxSize;
   private long[] dequeArray;
   private int front;
@@ -17,7 +16,7 @@ public class Deque
 //using ONLY insertLeft & removeRight means the array acts like a queue
   public void insertLeft(long j){          // put item at left of dequeue
     if(rear == maxSize-1) {
-      front = 0;
+      // front = 0;
       rear = -1;
     }
     for(int i=nItems; i > 0;i--){            //if shifted from front would overwrite everything
@@ -28,9 +27,8 @@ public class Deque
     rear++;
   }
 
-
   public long removeRight(){                // take item from most right of dequeue
-    long temp = dequeArray[front++];
+    long temp = dequeArray[rear];
     if(front == maxSize) {
       front = 0;
     }
@@ -48,7 +46,17 @@ public class Deque
     nItems++;
   }
 
-
+  public long removeLeft() {
+   long temp = dequeArray[front];
+   if (rear == maxSize) {
+     rear = 0;
+   }
+   for (int i = 0; i < nItems; i++) {
+     dequeArray[i] = dequeArray[i + 1];
+   }
+   nItems--;
+   return temp;
+  }
 
   public void displayDequeContent(){
     for (int i = 0; i < nItems; i++) {
@@ -64,7 +72,6 @@ public class Deque
     return dequeArray[rear];
   }
 
-
   public boolean isEmpty(){            // true if queue is empty
     return (nItems==0);
   }
@@ -76,6 +83,4 @@ public class Deque
   public int size() {                 // number of items in dequeue
     return nItems;
   }
-
-
 }
