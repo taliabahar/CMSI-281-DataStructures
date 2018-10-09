@@ -13,18 +13,27 @@ public class Deque {
     nItems = 0;
   }
 
-//using ONLY insertLeft & removeRight means the array acts like a queue
   public void insertLeft(long j){          // put item at left of dequeue
     if(rear == maxSize-1) {
-      // front = 0;
+      removeRight();
       rear = -1;
     }
-    for(int i=nItems; i > 0;i--){            //if shifted from front would overwrite everything
+    for(int i=nItems; i > 0;i--){                               //if shifted from front would overwrite everything
       dequeArray[i] = dequeArray[i-1];
     }
     dequeArray[front] = j;
     nItems++;
     rear++;
+  }
+
+  public void insertRight(long j){        // put item at right of deque
+    if(rear == maxSize-1) {
+      removeLeft();
+      rear -= 1;
+    }
+    rear++;
+    dequeArray[rear] = j;
+    nItems++;
   }
 
   public long removeRight(){                // take item from most right of dequeue
@@ -36,22 +45,12 @@ public class Deque {
     return temp;
   }
 
-//using ONLY insertRight & removeLeft means the array acts like a stack
-  public void insertRight(long j){        // put item at right of deque
-    if(rear == maxSize-1) {
-      rear = -1;
-    }
-    rear++;
-    dequeArray[rear] = j;
-    nItems++;
-  }
-
   public long removeLeft() {
    long temp = dequeArray[front];
    if (rear == maxSize) {
      rear = 0;
    }
-   for (int i = 0; i < nItems; i++) {
+   for (int i = 0; i < nItems-1; i++) {
      dequeArray[i] = dequeArray[i + 1];
    }
    nItems--;
