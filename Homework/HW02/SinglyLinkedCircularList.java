@@ -20,29 +20,6 @@ public class SinglyLinkedCircularList {
     }
   }
 
-  public int getSize() {
-    return size;
-  }
-
-  public void step(){
-    current = current.next;
-  }
-
-//want to append
-  public void insert(int valueToAdd) {
-    Node newNode = new Node(valueToAdd);
-    if (current == null) {
-      current = newNode;
-      tail = newNode;
-      newNode.next = tail;
-    } else {
-      tail.next = newNode;
-      newNode.next = current;
-      current = newNode;
-    }
-    size++;
-  }
-
   public class Iterator {
     private Node currentNode;
 
@@ -67,17 +44,54 @@ public class SinglyLinkedCircularList {
     }
   }
 
-  // public void prepend( int dataToAdd ) {
-  //   Node currentHead = head;
-  //   head = new Node( dataToAdd );
-  //   head.next = currentHead;
-  //   size++;
-  // }
+    public int getSize() {
+      return size;
+    }
 
-//display method
-//removeAt method
-//searching method
+    public void step(){
+      current = current.next;
+    }
 
+    //appends
+    public void insert(int valueToAdd) {
+      Node newNode = new Node(valueToAdd);
+      if (current == null) {
+        current = newNode;
+        tail = newNode;
+        newNode.next = tail;
+      } else {
+        tail.next = newNode;
+        tail = newNode;
+        newNode.next = current;
+      }
+      size++;
+    }
+
+    //deletes last item inserted
+    public void delete() {
+      Iterator itToDelete = getIteratorAt(size-1);
+      System.out.println("Deleting node: " + itToDelete.getCurrentInt());
+      Iterator it= getIteratorAt(size-2);
+      it.currentNode.next = it.currentNode.next.next;
+      size--;
+    }
+
+    //display method
+    public String display() {
+        String circularList = "";
+        for(int i=0; i < size; i++) {
+          Iterator it = getIteratorAt(i);
+        if(i != size-1) {
+          circularList += (it.getCurrentInt() + ", ");
+        } else {
+          circularList += (it.getCurrentInt() + " ");
+        }
+          step();
+        }
+        return circularList;
+    }
+
+  //searching method
   public Iterator getIteratorAt( int index ) {
     if( (index > size) || (index < 0) ) {
       throw new IllegalArgumentException();
@@ -88,25 +102,5 @@ public class SinglyLinkedCircularList {
       index--;
     }
     return it;
-  }
-
-  public void insertAt(int index, int valueToAdd) {
-    if( (index > size-1) || (index < 0) ) {
-      throw new IllegalArgumentException();
-    }
-    Iterator it = getIteratorAt(index-1);
-    Node newNode = new Node(valueToAdd);
-    newNode.next = it.currentNode.next;
-    it.currentNode.next = newNode;
-  }
-
-  public void removeAt(int index) {
-    if( (index > size-1) || (index < 0) ) {
-      throw new IllegalArgumentException();
-    }
-    Iterator itToDelete = getIteratorAt(index);
-    System.out.println("Deleting node: " + itToDelete.getCurrentInt());
-    Iterator it = getIteratorAt(index-1);
-    it.currentNode.next = it.currentNode.next.next;
   }
 }

@@ -59,7 +59,7 @@ public class Deque {
 
   public void displayDequeContent(){
     for (int i = 0; i < nItems; i++) {
-        System.out.println(dequeArray[(front+i)%(nItems)]);
+      System.out.println(dequeArray[(front+i)%(nItems)]);
     }
   }
 

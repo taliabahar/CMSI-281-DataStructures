@@ -1,5 +1,4 @@
-public class Queue
-{
+public class Queue {
   private int maxSize;
   private long[] queArray;
   private int front;
@@ -52,6 +51,4 @@ public class Queue
   public int size() {                 // number of items in queue
     return nItems;
   }
-
-
 }
