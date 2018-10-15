@@ -1,20 +1,48 @@
+/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ *  File name     :  DequeApp.java
+ *  Purpose       :  A test harness file for testing out the methods in the "Deque.java" class.
+ *  Author        :  Talia Bahar, Maya Pegler-Gordon
+ *  Date          :  2018-10-14
+ *  Description   :  Provides several tests to check all methods from "Deque.java" are working correctly.
+ *  Notes         :  None
+ *  Warnings      :  None
+ *  Exceptions    :  None
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 public class DequeApp {
   public static void main(String[] args) {
     Deque theDeque = new Deque(5);           // Deque holds 5 items
     System.out.println(" ");
 
-    System.out.println("Testing insertLeft()");
-    System.out.println("Expected Output: 70,40,30,20,10");
-    theDeque.insertLeft(10);
-    theDeque.insertLeft(20);
-    theDeque.insertLeft(30);
-    theDeque.insertLeft(40);
-    theDeque.insertLeft(70);
-    theDeque.displayDequeContent();
-    System.out.println("Inserting a 6th item [90]");
-    System.out.println("Expected Output: 90,70,40,30,20");
-    theDeque.insertLeft(90);
-    theDeque.displayDequeContent();
+    // System.out.println("Testing insertLeft()");
+    // System.out.println("Expected Output: 70,40,30,20,10");
+    // theDeque.insertLeft(10);
+    // theDeque.insertLeft(20);
+    // theDeque.insertLeft(30);
+    // theDeque.insertLeft(40);
+    // theDeque.insertLeft(70);
+    // theDeque.displayDequeContent();
+    // System.out.println("Inserting a 6th item [90]");
+    // System.out.println("Expected Output: 90,70,40,30,20");
+    // theDeque.insertLeft(90);
+    // theDeque.displayDequeContent();
+    // theDeque.insertLeft(12);
+    //    theDeque.insertRight(13);
+    //    theDeque.insertLeft(11);
+    //    theDeque.insertRight(14); // 11, 12, 13, 14
+
+
+    theDeque.insertLeft(12);
+           theDeque.insertRight(13);
+           theDeque.insertLeft(11);
+           theDeque.insertRight(14); // 11, 12, 13, 14
+
+           theDeque.removeRight();
+           theDeque.removeRight();
+           theDeque.removeRight();
+           theDeque.removeRight(); // empty deque
+
+           theDeque.insertLeft(12);
+           theDeque.insertRight(13); // fucks up
 
 
     // System.out.println("Testing insertRight()");
@@ -28,7 +56,7 @@ public class DequeApp {
     // System.out.println("Inserting a 6th item [90]");
     // System.out.println("Expected Output: 20,30,40,70,90");
     // theDeque.insertRight(90);
-    // theDeque.displayDequeContent();
+    theDeque.displayDequeContent();
 
 
     // System.out.println(" ");

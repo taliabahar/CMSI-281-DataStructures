@@ -1,3 +1,13 @@
+/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ *  File name     :  QueueApp.java
+ *  Purpose       :  A test harness file for testing out the methods in the "Queue.java" class.
+ *  Author        :  Talia Bahar, Maya Pegler-Gordon
+ *  Date          :  2018-10-14
+ *  Description   :  Provides several tests to check all methods from "Queue.java" are working correctly.
+ *  Notes         :  None
+ *  Warnings      :  None
+ *  Exceptions    :  None
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 public class QueueApp {
   public static void main(String[] args) {
     Queue theQueue = new Queue(5);           // queue holds 5 items

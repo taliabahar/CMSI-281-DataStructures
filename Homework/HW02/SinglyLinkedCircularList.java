@@ -1,9 +1,21 @@
+/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ *  File name     :  SinglyLinkedCircularList.java
+ *  Purpose       :  Implements a Singly Linked Circular Linked List.
+ *  Author        :  Talia Bahar, Maya Pegler-Gordon
+ *  Date          :  2018-10-14
+ *  Description   :  This program contains a Node class, Iterator class, alongside the SinglyLinkedCircularList class.
+ *                   Contains methods to insert new nodes after the most recently inserted node, to delete the
+ *                   most recently inserted node, and to display list contents. There is also a getIteratorAt method
+ *                   which can be used to search through the list contents.
+ *  Notes         :  None
+ *  Warnings      :  None
+ *  Exceptions    :  None
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 public class SinglyLinkedCircularList {
   private Node current;
   private Node tail;
   private int  size;
 
-  // the constructor
   SinglyLinkedCircularList() {
     current = null;
     tail = null;
@@ -11,9 +23,9 @@ public class SinglyLinkedCircularList {
   }
 
   private class Node {
-    int data;            // remember this is an IntLinkedList
-    Node next;           // here's the self-referential part
-    // constructor
+    int data;
+    Node next;
+
     Node( int d ) {
       data = d;
       next = null;
@@ -52,7 +64,10 @@ public class SinglyLinkedCircularList {
       current = current.next;
     }
 
-    //appends
+    /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    * Method to append node to linked list.
+    * @param int representing value to add
+    *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
     public void insert(int valueToAdd) {
       Node newNode = new Node(valueToAdd);
       if (current == null) {
@@ -67,7 +82,9 @@ public class SinglyLinkedCircularList {
       size++;
     }
 
-    //deletes last item inserted
+    /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    * Method to delete most recently inserted node.
+    *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
     public void delete() {
       Iterator itToDelete = getIteratorAt(size-1);
       System.out.println("Deleting node: " + itToDelete.getCurrentInt());
@@ -76,22 +93,29 @@ public class SinglyLinkedCircularList {
       size--;
     }
 
-    //display method
+    /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    * Method to display value of node in linked list.
+    * @return String representing list contents.
+    *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
     public String display() {
         String circularList = "";
         for(int i=0; i < size; i++) {
           Iterator it = getIteratorAt(i);
-        if(i != size-1) {
-          circularList += (it.getCurrentInt() + ", ");
-        } else {
-          circularList += (it.getCurrentInt() + " ");
+          if(i != size-1) {
+            circularList += (it.getCurrentInt() + ", ");
+          } else {
+              circularList += (it.getCurrentInt() + " ");
+            }
+        step();
         }
-          step();
-        }
-        return circularList;
+      return circularList;
     }
 
-  //searching method
+    /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    * Method to search through node values in linked list.
+    * @param int representing index spot of node user wants to find.
+    * @return Iterator representing node value at given index.
+    *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
   public Iterator getIteratorAt( int index ) {
     if( (index > size) || (index < 0) ) {
       throw new IllegalArgumentException();

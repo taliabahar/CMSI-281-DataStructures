@@ -1,3 +1,13 @@
+/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ *  File name     :  SinglyLinkedCircularListTester.java
+ *  Purpose       :  A test harness file for testing out the methods in the "SinglyLinkedCircularList.java" class.
+ *  Author        :  Talia Bahar, Maya Pegler-Gordon
+ *  Date          :  2018-10-14
+ *  Description   :  Provides several tests to check all methods from "SinglyLinkedCircularList.java" are working correctly.
+ *  Notes         :  None
+ *  Warnings      :  None
+ *  Exceptions    :  None
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 public class SinglyLinkedCircularListTester {
   public static void main(String[] args) {
     SinglyLinkedCircularList myCircularList = new SinglyLinkedCircularList();
@@ -29,11 +39,5 @@ public class SinglyLinkedCircularListTester {
     System.out.println(" ");
     System.out.println("Displaying Circular List after deleting 10,9,8:");
     System.out.println(myCircularList.display());
-
-
-
-
-
-
   }
 }
