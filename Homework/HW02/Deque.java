@@ -15,79 +15,152 @@ public class Deque {
   private int front;
   private int rear;
   private int nItems;
+  private boolean isLeftOpen;
+  private boolean isRightOpen;
 
-  public Deque(int s){
+  public Deque(int s) {
     maxSize = s;
     dequeArray = new long[maxSize];
     front = 0;
     rear = -1;
     nItems = 0;
+    isLeftOpen = true;
+    isRightOpen = true;
   }
 
   /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   * Method to insert items at front of Deque.
   * @param long j representing value to insert
   *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-  public void insertLeft(long j){
+  public void insertLeft(long j) {
+    //  1st if
     if(rear == maxSize-1) {
-      removeRight();
-      rear = -1;
+      System.out.println("THE ARRAY IS FULL. REMOVE BEFORE INSERTING.");
     }
-    for(int i=nItems; i > 0;i--){
-      dequeArray[i] = dequeArray[i-1];
+    // 2nd if
+    else if((isLeftOpen) && (nItems != maxSize-1)) {
+      for(int i=maxSize-1; i > 0; i--) {
+        dequeArray[i] = dequeArray[i-1];
+      }
+      dequeArray[front] = j;
+      rear++;
+      nItems++;
     }
-    dequeArray[front] = j;
-    nItems++;
-    rear++;
+    // 3rd if
+    else if((isLeftOpen) && (nItems == maxSize-1)) {
+      isLeftOpen = false;
+      for(int i=maxSize-1; i > 0; i--) {
+        dequeArray[i] = dequeArray[i-1];
+      }
+      rear++;
+      dequeArray[front] = j;
+      nItems++;
+    }
+    // 4th if
+    else if(!isLeftOpen && isRightOpen) {
+      insertRight(j);
+    }
   }
 
   /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   * Method to insert items at rear of Deque.
-  * @param j  long representing value to insert
+  * @param long j representing value to insert
   *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-  public void insertRight(long j){
+  public void insertRight(long j) {
     if(rear == maxSize-1) {
-      removeLeft();
-      rear -= 1;
+      System.out.println("THE ARRAY IS FULL. REMOVE BEFORE INSERTING.");
+    } else if((isRightOpen) && (nItems != maxSize-1)) {
+      rear++;
+      dequeArray[rear] = j;
+      nItems++;
+    } else if((isRightOpen) && (nItems == maxSize-1)) {
+      isRightOpen = false;
+      rear++;
+      dequeArray[rear] = j;
+      nItems++;
+    } else if(!isRightOpen && isLeftOpen) {
+      insertLeft(j);
     }
-    rear++;
-    dequeArray[rear] = j;
-    nItems++;
   }
+
+  // public void insertRight(long j) throws IllegalStateException {
+  //   System.out.println("INSERTING RIGHT");
+  //   if(rear == maxSize-1) {
+  //     throw new IllegalStateException("Array is full");
+  //   } else if (nItems == maxSize-1) {
+  //     isRightOpen = false;
+  //     rear++;
+  //     dequeArray[rear] = j;
+  //     nItems++;
+  //   // }
+  //   } else {
+  //     rear++;
+  //     dequeArray[rear] = j;
+  //     nItems++;
+  //   }
+  //   // } else if((isRightOpen) && (nItems != maxSize-1)) {
+  //   //   System.out.println("2nd if");
+  //   //   dequeArray[rear] = j;
+  //   //   rear++;
+  //   //   nItems++;
+  //   //   System.out.println("fucking itemz: " + nItems);
+  //   //   // System.out.println(nItems);
+  //   // } else if((isRightOpen) && (nItems == maxSize-1)) {
+  //   //   System.out.println("3rd if");
+  //   //   // System.out.println(nItems);
+  //   //   isRightOpen = false;
+  //   //   dequeArray[rear] = j;
+  //   //   rear++;
+  //   //   nItems++;
+  //   //   System.out.println("fucking itemz: " + nItems);
+  //   // } else if(!isRightOpen && isLeftOpen) {
+  //   //   System.out.println("4th if");
+  //   //   insertLeft(j);
+  //   // }
+  // }
 
   /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   * Method to remove item at rear of dequeArray.
   * @return removed long value
   *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-  public long removeRight(){
+  public long removeRight() {
     long temp = dequeArray[rear];
-    if(front == maxSize) {
-      front = 0;
+    if(nItems == maxSize) {
+      isLeftOpen = false;
+      isRightOpen = true;
     }
+    rear--;
     nItems--;
     return temp;
   }
+  //remove from that end and set to 0 or null and decrease nItems--
 
   /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   * Method to remove item at front of Deque.
   * @return removed long value
   *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
   public long removeLeft() {
-   long temp = dequeArray[front];
-   if (rear == maxSize) {
-     rear = 0;
-   }
-   for (int i = 0; i < nItems-1; i++) {
-     dequeArray[i] = dequeArray[i + 1];
-   }
-   nItems--;
-   return temp;
+    long temp = dequeArray[front];
+    if(nItems == maxSize) {
+      isLeftOpen = true;
+      isRightOpen = false;
+    }
+    for (int i = 0; i < nItems-1; i++) {
+      dequeArray[i] = dequeArray[i + 1];
+    }
+    rear--;
+    nItems--;
+    if(nItems == 0){
+      isLeftOpen = true;
+      isRightOpen = true;
+    }
+    return temp;
   }
 
   /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   * Method to display contents of dequeArray.
   *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-  public void displayDequeContent(){
+  public void displayDequeContent() {
     for (int i = 0; i < nItems; i++) {
       System.out.println(dequeArray[(front+i)%(nItems)]);
     }
@@ -97,7 +170,7 @@ public class Deque {
   * Method to reveal value at front of dequeArray.
   * @return value at front of dequeArray.
   *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-  public long peekFront(){
+  public long peekFront() {
     return dequeArray[front];
   }
 
@@ -105,7 +178,7 @@ public class Deque {
   * Method to reveal value at rear of dequeArray.
   * @return value at rear of dequeArray.
   *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-  public long peekRear(){
+  public long peekRear() {
     return dequeArray[rear];
   }
 
@@ -113,7 +186,7 @@ public class Deque {
   * Method to check if dequeArray is empty.
   * @return true if dequeArray is empty
   *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-  public boolean isEmpty(){
+  public boolean isEmpty() {
     return (nItems==0);
   }
 

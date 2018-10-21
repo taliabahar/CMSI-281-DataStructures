@@ -23,66 +23,66 @@ class Link {
 }
 
 class FirstLastListStack {
-    private Link first;
-    private Link last;
+  private Link first;
+  private Link last;
 
-    public FirstLastListStack() {
+  public FirstLastListStack() {
     first = null;
     last = null;
   }
-    public boolean isEmpty() {
-        return first==null;
+  public boolean isEmpty() {
+    return first==null;
+  }
+
+  /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  * Method to insert long at top of list.
+  * @param long dd represents value to add
+  *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+  public void push(long dd) {
+    Link newLink = new Link(dd);
+      if( isEmpty() ) {
+        first = newLink;
+      } else {
+          last.next = newLink;
+      } 
+    last = newLink;
+  }
+
+  /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  * Method to remove most recently inserted long value.
+  *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+  public void pop() throws IllegalArgumentException {
+    if(isEmpty() || first.next == null) {
+      throw new IllegalArgumentException("Not enough items in the list");
     }
+    Link secondToLastRef = first;
+    Link lastRef = first.next;
+    while(lastRef != last) {
+      lastRef = lastRef.next;
+      secondToLastRef = secondToLastRef.next;
+    }
+    secondToLastRef.next = null;
+    last = secondToLastRef;
+  }
 
-    /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    * Method to insert long at top of list.
-    * @param long dd represents value to add
-    *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-    public void push(long dd) {
-        Link newLink = new Link(dd);
-        if( isEmpty() ) {
-            first = newLink;
-        } else {
-            last.next = newLink;
-        }
-        last = newLink;
-}
+  /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  * Method to look at most recently inserted value.
+  * @return most recently inserted value.
+  *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+  public long peek() {
+    return last.dData;
+  }
 
-/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-* Method to remove most recently inserted long value.
-*  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-    public void pop() throws IllegalArgumentException {
-      if(isEmpty() || first.next == null) {
-          throw new IllegalArgumentException("Not enough items in the list");
+  /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  * Method to display list contents.
+  *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+  public void displayList() {
+      System.out.print("List (first-->last): ");
+      Link current = first;
+      while(current != null) {
+        current.displayLink();
+        current = current.next;
       }
-      Link secondToLastRef = first;
-      Link lastRef = first.next;
-      while(lastRef != last) {
-          lastRef = lastRef.next;
-          secondToLastRef = secondToLastRef.next;
-      }
-      secondToLastRef.next = null;
-      last = secondToLastRef;
-    }
-
-    /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    * Method to look at most recently inserted value.
-    * @return most recently inserted value.
-    *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-    public long peek() {
-      return last.dData;
-    }
-
-    /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    * Method to display list contents.
-    *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-    public void displayList() {
-        System.out.print("List (first-->last): ");
-        Link current = first;
-        while(current != null) {  
-            current.displayLink();
-            current = current.next;
-        }
-        System.out.println("");
-    }
+    System.out.println("");
+  }
 }

@@ -16,7 +16,7 @@ public class Queue {
   private int rear;
   private int nItems;
 
-  public Queue(int s){ //constrcutor
+  public Queue(int s) { //constrcutor
     maxSize = s;
     queArray = new long[maxSize];
     front = 0;
@@ -28,7 +28,7 @@ public class Queue {
   * Method to insert value at rear of queArray.
   * @param long j representing value to add
   *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-  public void insert(long j){
+  public void insert(long j) {
     if(rear == maxSize-1) {
       rear = -1;
     }
@@ -39,12 +39,13 @@ public class Queue {
   /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   * Method to remove value at front of queArray.
   *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-  public long remove(){                // take item from front of queue
-    long temp = queArray[front++];
-    if(front == maxSize) {
-      front = 0;
+  public long remove(){
+    long temp = queArray[front];
+    for(int i=0; i < nItems-1; i++) {
+      queArray[i] = queArray[i+1];
     }
     nItems--;
+    rear--;
     return temp;
   }
 
@@ -53,14 +54,14 @@ public class Queue {
   *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
   public void displayQueueContent() {
     for (int i = 0; i < nItems; i++) {
-        System.out.println(queArray[(front+i)%(nItems)]);
+      System.out.println(queArray[(front+i)%(nItems)]);
     }
   }
 
   /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   * Method to display value at front of queArray.
   *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-  public long peekFront(){
+  public long peekFront() {
     return queArray[front];
   }
 
@@ -68,7 +69,7 @@ public class Queue {
   * Method to check if queArray is empty.
   * @return true if queArray is empty.
   *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-  public boolean isEmpty(){
+  public boolean isEmpty() {
     return (nItems==0);
   }
 

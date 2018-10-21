@@ -32,12 +32,17 @@ public class SinglyLinkedCircularListTester {
     myIt.next();
     System.out.println("Displaying Circular List");
     System.out.println(myCircularList.display());
+    System.out.println("Finding value at index 4: "); // 7
+    System.out.println(myCircularList.search(4));
     System.out.println(" ");
     myCircularList.delete();
     myCircularList.delete();
     myCircularList.delete();
+    // myCircularList.insert(90); !!!!!DOESN'T INSERT 
     System.out.println(" ");
     System.out.println("Displaying Circular List after deleting 10,9,8:");
     System.out.println(myCircularList.display());
+    System.out.println("Finding value at index 2: "); // 7
+    System.out.println(myCircularList.search(2));
   }
 }

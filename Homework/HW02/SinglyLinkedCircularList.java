@@ -104,27 +104,44 @@ public class SinglyLinkedCircularList {
           if(i != size-1) {
             circularList += (it.getCurrentInt() + ", ");
           } else {
-              circularList += (it.getCurrentInt() + " ");
-            }
-        step();
+            circularList += (it.getCurrentInt() + " ");
+          }
+          step();
         }
       return circularList;
     }
 
     /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    * Method to search through nodes in linked list.
+    * @param int representing index spot of node user wants to find.
+    * @return Iterator representing node at given index.
+    *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+    public Iterator getIteratorAt( int index ) {
+      if( (index > size) || (index < 0) ) {
+        throw new IllegalArgumentException();
+      }
+      Iterator it = new Iterator();
+      while( index > 0 ) {
+        it.next();
+        index--;
+      }
+      return it;
+    }
+
+    /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     * Method to search through node values in linked list.
     * @param int representing index spot of node user wants to find.
-    * @return Iterator representing node value at given index.
+    * @return int representing node value at given index.
     *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-  public Iterator getIteratorAt( int index ) {
-    if( (index > size) || (index < 0) ) {
-      throw new IllegalArgumentException();
+    public int search( int index ) {
+      if( (index > size) || (index < 0) ) {
+        throw new IllegalArgumentException();
+      }
+      Iterator it = new Iterator();
+      while( index > 0 ) {
+        it.next();
+        index--;
+      }
+      return it.getCurrentInt();
     }
-    Iterator it = new Iterator();
-    while( index > 0 ) {
-      it.next();
-      index--;
-    }
-    return it;
-  }
 }
