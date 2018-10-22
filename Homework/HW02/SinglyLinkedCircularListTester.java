@@ -38,7 +38,6 @@ public class SinglyLinkedCircularListTester {
     myCircularList.delete();
     myCircularList.delete();
     myCircularList.delete();
-    // myCircularList.insert(90); !!!!!DOESN'T INSERT 
     System.out.println(" ");
     System.out.println("Displaying Circular List after deleting 10,9,8:");
     System.out.println(myCircularList.display());

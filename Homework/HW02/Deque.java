@@ -15,8 +15,8 @@ public class Deque {
   private int front;
   private int rear;
   private int nItems;
-  private boolean isLeftOpen;
-  private boolean isRightOpen;
+  public boolean isLeftOpen;
+  public boolean isRightOpen;
 
   public Deque(int s) {
     maxSize = s;
@@ -83,42 +83,6 @@ public class Deque {
     }
   }
 
-  // public void insertRight(long j) throws IllegalStateException {
-  //   System.out.println("INSERTING RIGHT");
-  //   if(rear == maxSize-1) {
-  //     throw new IllegalStateException("Array is full");
-  //   } else if (nItems == maxSize-1) {
-  //     isRightOpen = false;
-  //     rear++;
-  //     dequeArray[rear] = j;
-  //     nItems++;
-  //   // }
-  //   } else {
-  //     rear++;
-  //     dequeArray[rear] = j;
-  //     nItems++;
-  //   }
-  //   // } else if((isRightOpen) && (nItems != maxSize-1)) {
-  //   //   System.out.println("2nd if");
-  //   //   dequeArray[rear] = j;
-  //   //   rear++;
-  //   //   nItems++;
-  //   //   System.out.println("fucking itemz: " + nItems);
-  //   //   // System.out.println(nItems);
-  //   // } else if((isRightOpen) && (nItems == maxSize-1)) {
-  //   //   System.out.println("3rd if");
-  //   //   // System.out.println(nItems);
-  //   //   isRightOpen = false;
-  //   //   dequeArray[rear] = j;
-  //   //   rear++;
-  //   //   nItems++;
-  //   //   System.out.println("fucking itemz: " + nItems);
-  //   // } else if(!isRightOpen && isLeftOpen) {
-  //   //   System.out.println("4th if");
-  //   //   insertLeft(j);
-  //   // }
-  // }
-
   /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   * Method to remove item at rear of dequeArray.
   * @return removed long value
@@ -131,6 +95,10 @@ public class Deque {
     }
     rear--;
     nItems--;
+    if(nItems == 0){
+      isLeftOpen = true;
+      isRightOpen = true;
+    }
     return temp;
   }
   //remove from that end and set to 0 or null and decrease nItems--
