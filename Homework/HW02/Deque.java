@@ -15,8 +15,8 @@ public class Deque {
   private int front;
   private int rear;
   private int nItems;
-  public boolean isLeftOpen;
-  public boolean isRightOpen;
+  private boolean isLeftOpen;
+  private boolean isRightOpen;
 
   public Deque(int s) {
     maxSize = s;
