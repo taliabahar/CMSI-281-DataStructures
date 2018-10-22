@@ -33,11 +33,9 @@ public class Deque {
   * @param long j representing value to insert
   *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
   public void insertLeft(long j) {
-    //  1st if
     if(rear == maxSize-1) {
       System.out.println("THE ARRAY IS FULL. REMOVE BEFORE INSERTING.");
     }
-    // 2nd if
     else if((isLeftOpen) && (nItems != maxSize-1)) {
       for(int i=maxSize-1; i > 0; i--) {
         dequeArray[i] = dequeArray[i-1];
@@ -46,7 +44,6 @@ public class Deque {
       rear++;
       nItems++;
     }
-    // 3rd if
     else if((isLeftOpen) && (nItems == maxSize-1)) {
       isLeftOpen = false;
       for(int i=maxSize-1; i > 0; i--) {
@@ -56,7 +53,6 @@ public class Deque {
       dequeArray[front] = j;
       nItems++;
     }
-    // 4th if
     else if(!isLeftOpen && isRightOpen) {
       insertRight(j);
     }
@@ -101,7 +97,6 @@ public class Deque {
     }
     return temp;
   }
-  //remove from that end and set to 0 or null and decrease nItems--
 
   /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   * Method to remove item at front of Deque.
